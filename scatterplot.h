@@ -10,22 +10,26 @@
 struct Point {
     int x;
     int y;
+    Point* next;
 
-    Point(int x, int y) : x(x), y(y) {}
-    Point() : x(NULL), y(NULL) {}
+    Point(int x, int y) : x(x), y(y), next(nullptr) {}
+    Point(int x, int y, Point* next) : x(x), y(y), next(next) {}
+    Point() : x(NULL), y(NULL), next(nullptr) {}
 };
 
 class ScatterPlot {
 private:
     int size;
     Point *head;
+    bool duplicate(const ScatterPlot& result, Point* rhs) const;
+    bool equal(const ScatterPlot& lhs, Point* rhs) const;
 public:
     ScatterPlot() :size(0), head(nullptr) {};
     ScatterPlot(const ScatterPlot &other); // deepcopy
     ~ScatterPlot();
 
     ScatterPlot operator+(const ScatterPlot& rhs) const;
-    ScatterPlot operator+(const Point& rhs) const;
+    ScatterPlot operator+(Point* rhs) const;
 
     ScatterPlot& operator=(const ScatterPlot& rhs);
     bool operator==(const ScatterPlot& rhs) const;
