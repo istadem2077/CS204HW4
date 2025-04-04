@@ -24,7 +24,8 @@ private:
     bool duplicate(const ScatterPlot& result, Point* rhs) const;
     bool equal(const ScatterPlot& lhs, Point* rhs) const;
 public:
-    ScatterPlot() :size(0), head(nullptr) {};
+    ScatterPlot() :size(0), head(nullptr) {}
+    ScatterPlot(int size, Point* head) :size(size), head(head) {}
     ScatterPlot(const ScatterPlot &other); // deepcopy
     ~ScatterPlot();
 
